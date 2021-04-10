@@ -57,72 +57,71 @@ public class Main {
 
     //----------------------------------------------------- Что будет в showActionListenerDemo
     private void showActionListenerDemo() {
-        headerLabel.setText("Listener in action: ActionListener");
+        headerLabel.setText("Listener in action: Listener");
 
         //----------------------------------------------------- 1
-        ScrollPane panel1 = new ScrollPane();
-        panel1.setBackground(Color.magenta);
+        ScrollPane panel1 = new ScrollPane(); // создание панели
+        panel1.setBackground(Color.magenta); // заливка
 
-        Button okButton0 = new Button("OK");
+        Button okButton0 = new Button("OK"); // кнопка
 
-        okButton0.addActionListener(new CustomActionListener());
+        okButton0.addActionListener(new CustomActionListener()); // действие
         panel1.add(okButton0);
-        controlPanel.add(panel1);
+        controlPanel.add(panel1); // на панель
 
         //----------------------------------------------------- 2
-        ScrollPane panel = new ScrollPane();
-        panel.setBackground(Color.GREEN);
+        ScrollPane panel = new ScrollPane(); // создание панели
+        panel.setBackground(Color.GREEN);// заливка
 
-        Label msglabel = new Label();
-        msglabel.setAlignment(Label.CENTER);
-        msglabel.setText("Welcome to TutorialsPoint AWT Tutorial.");
+        Label msglabel = new Label(); // метка
+        msglabel.setAlignment(Label.CENTER); // место
+        msglabel.setText("Welcome to TutorialsPoint AWT Tutorial."); // надпись
         panel.add(msglabel);
 
-        msglabel.addComponentListener(new CustomComponentListener());
-        controlPanel.add(panel);
+        msglabel.addComponentListener(new CustomComponentListener());// действие
+        controlPanel.add(panel);  // на панель
 
         //----------------------------------------------------- 3
-        headerLabel.setText("Listener in action: ItemListener");
-        Checkbox chkApple = new Checkbox("Apple");
+        Checkbox chkApple = new Checkbox("Apple"); // вбрать, галочка
         Checkbox chkMango = new Checkbox("Mango");
         Checkbox chkPeer = new Checkbox("Peer");
 
-        chkApple.addItemListener(new CustomItemListener());
+        chkApple.addItemListener(new CustomItemListener());// действие
         chkMango.addItemListener(new CustomItemListener());
         chkPeer.addItemListener(new CustomItemListener());
 
-        controlPanel.add(chkApple);
-        controlPanel.add(chkMango);
+        controlPanel.add(chkApple); // надпись
+        controlPanel.add(chkMango);// на панель
         controlPanel.add(chkPeer);
 
         //----------------------------------------------------- 4
-        textField.addKeyListener(new CustomKeyListener());
-        Button okButton2 = new Button("OK");
-        okButton2.addActionListener(new ActionListener() {
+        textField.addKeyListener(new CustomKeyListener()); // текстовое поле
+        Button okButton2 = new Button("OK"); // кнопка
+        okButton2.addActionListener(new ActionListener() {// действие
             public void actionPerformed(ActionEvent e) {
-                statusLabel.setText("Entered text: " + textField.getText());
+                statusLabel.setText("Entered text: " + textField.getText());// надпись
             }
         });
 
         controlPanel.add(textField);
-        controlPanel.add(okButton2);
+        controlPanel.add(okButton2);// на панель
 
         //----------------------------------------------------- 5
-        Panel panel3 = new Panel();
-        panel3.setBackground(Color.LIGHT_GRAY);
+        Panel panel3 = new Panel();// создание панели
+        panel3.setBackground(Color.LIGHT_GRAY);// заливка
         panel3.setLayout(new FlowLayout());
-        panel3.addMouseListener(new CustomMouseListener());
+        panel3.addMouseListener(new CustomMouseListener()); // действие
 
-        Label msglabel2 = new Label();
+        Label msglabel2 = new Label(); // метка
         msglabel2.setAlignment(Label.CENTER);
-        msglabel2.setText("Welcome to TutorialsPoint AWT Tutorial.");
+        msglabel2.setText("Welcome to TutorialsPoint AWT Tutorial.");// надпись
 
-        msglabel2.addMouseListener(new CustomMouseListener());
+        msglabel2.addMouseListener(new CustomMouseListener());// действие
         panel3.add(msglabel2);
 
-        controlPanel.add(panel3);
+        controlPanel.add(panel3);// на панель
 
-        
+
 
         mainFrame.setVisible(true);
     }
@@ -131,7 +130,7 @@ public class Main {
     //----------------------------------------------------- 1
     class CustomActionListener implements ActionListener{
 
-        public void actionPerformed(ActionEvent e) {
+        public void actionPerformed(ActionEvent e) { // действие
             statusLabel.setText("Ok Button Clicked.");
         }
     }
@@ -139,22 +138,22 @@ public class Main {
     //----------------------------------------------------- 2
     class CustomComponentListener implements ComponentListener {
 
-        public void componentResized(ComponentEvent e) {
+        public void componentResized(ComponentEvent e) { // действие
             statusLabel.setText(statusLabel.getText()
                     + e.getComponent().getClass().getSimpleName() + " resized. ");
         }
 
-        public void componentMoved(ComponentEvent e) {
+        public void componentMoved(ComponentEvent e) { // действие
             statusLabel.setText(statusLabel.getText()
                     + e.getComponent().getClass().getSimpleName() + " moved. ");
         }
 
-        public void componentShown(ComponentEvent e) {
+        public void componentShown(ComponentEvent e) { // действие
             statusLabel.setText(statusLabel.getText()
                     + e.getComponent().getClass().getSimpleName() + " shown. ");
         }
 
-        public void componentHidden(ComponentEvent e) {
+        public void componentHidden(ComponentEvent e) { // действие
             statusLabel.setText(statusLabel.getText()
                     + e.getComponent().getClass().getSimpleName() + " hidden. ");
         }
@@ -162,7 +161,7 @@ public class Main {
 
     //----------------------------------------------------- 3
     class CustomItemListener implements ItemListener {
-        public void itemStateChanged(ItemEvent e) {
+        public void itemStateChanged(ItemEvent e) { // действие
             statusLabel.setText(e.getItem()
                     +" Checkbox: "
                     + (e.getStateChange()==1?"checked":"unchecked"));
@@ -174,7 +173,7 @@ public class Main {
         public void keyTyped(KeyEvent e) {
         }
 
-        public void keyPressed(KeyEvent e) {
+        public void keyPressed(KeyEvent e) { // действие
             if(e.getKeyCode() == KeyEvent.VK_ENTER){
                 statusLabel.setText("Entered text: " + textField.getText());
             }
@@ -187,7 +186,7 @@ public class Main {
     //----------------------------------------------------- 5
     class CustomMouseListener implements MouseListener{
 
-        public void mouseClicked(MouseEvent e) {
+        public void mouseClicked(MouseEvent e) { // действие
             statusLabel.setText("Mouse Clicked: ("
                     +e.getX()+", "+e.getY() +")");
         }
